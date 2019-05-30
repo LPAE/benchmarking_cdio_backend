@@ -1,27 +1,73 @@
 const mongoose = require('mongoose');
 
 const Concepcao = new mongoose.Schema({
-  contextualizar : Number,
-  problematizar : Number,
-  pensamentoCriativo: Number,
-  pensamentoCritico: Number,
-  conceber: Number,
-  capacidadeDeSintese: Number
+  'Contextualizar': Number,
+  'Problematizar': Number,
+  'Pensamento Criativo': Number,
+  'Pensamento Crítico': Number,
+  'Conceber': Number,
+  'Capacidade de Síntese': Number
+});
+
+const Design = new mongoose.Schema({
+  'Design Geral': Number,
+  'Identificar Partes': Number,
+  'Análise Das Partes': Number,
+  'Desenvoltura': Number,
+  'Pensamento Criativo': Number,
+  'Pensamento Crítico': Number,
+  'Capacidade De Sintese': Number
+});
+
+const Implementacao = new mongoose.Schema({
+  'Comprometimento': Number,
+  'Implementar Ideias': Number,
+  'Testar e Verificar': Number,
+  'Solucionar e Recomendar': Number,
+  'Integar Recursos': Number,
+  'Desenvoltura': Number,
+  'Capacidad de Síntese': Number,
+  'Entusiasmo': Number
+});
+
+const Operacao = new mongoose.Schema({
+  'Apresentação Oral e Comunicação': Number,
+  'Operação de Processos': Number,
+  'Controle de Performance': Number,
+  'Teste de Aceite': Number,
+  'Reflexão Sobre o Projeto': Number,
+  'Documento Sobre o Projeto': Number,
+  'Conhecimento Novo': Number
 });
 
 const Equipe = new mongoose.Schema({
-  nome : String,
-  concepcao : Concepcao
+  nome: String,
+  concepcao: Concepcao,
+  design: Design,
+  implementacao: Implementacao,
+  operacao: Operacao
 });
 
 const Turma = new mongoose.Schema({
-  id: { 
+  curso: {
     type: String,
-    required: true, 
+    required: true
   },
-  equipes : [Equipe],
-  expectativa : {
-    concepcao : Concepcao
+  projeto: {
+    type: String,
+    required: true
+  },
+  numero: Number,
+  semestre: {
+    type: String,
+    required: true
+  },
+  equipes: [Equipe],
+  expectativa: {
+    concepcao: Concepcao,
+    design: Design,
+    implementacao: Implementacao,
+    operacao: Operacao
   }
 });
 

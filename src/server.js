@@ -12,6 +12,8 @@ mongoose.connect(
   (err) => {
     if(err)
       console.log('Erro ao conectar ao MongoDB');
+    else
+      console.log('Conectado ao MongoDB')
   });
 
 app.use(express.json());
