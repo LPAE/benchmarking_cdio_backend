@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const Concepcao = new mongoose.Schema({
-  'Contextualizar': Number,
-  'Problematizar': Number,
+  Contextualizar: Number,
+  Problematizar: Number,
   'Pensamento Criativo': Number,
   'Pensamento Crítico': Number,
-  'Conceber': Number,
+  Conceber: Number,
   'Capacidade de Síntese': Number
 });
 
@@ -13,21 +13,21 @@ const Design = new mongoose.Schema({
   'Design Geral': Number,
   'Identificar Partes': Number,
   'Análise Das Partes': Number,
-  'Desenvoltura': Number,
+  Desenvoltura: Number,
   'Pensamento Criativo': Number,
   'Pensamento Crítico': Number,
-  'Capacidade De Sintese': Number
+  'Capacidade De Síntese': Number
 });
 
 const Implementacao = new mongoose.Schema({
-  'Comprometimento': Number,
+  Comprometimento: Number,
   'Implementar Ideias': Number,
   'Testar e Verificar': Number,
   'Solucionar e Recomendar': Number,
   'Integar Recursos': Number,
-  'Desenvoltura': Number,
+  Desenvoltura: Number,
   'Capacidad de Síntese': Number,
-  'Entusiasmo': Number
+  Entusiasmo: Number
 });
 
 const Operacao = new mongoose.Schema({
@@ -42,10 +42,12 @@ const Operacao = new mongoose.Schema({
 
 const Equipe = new mongoose.Schema({
   nome: String,
-  concepcao: Concepcao,
-  design: Design,
-  implementacao: Implementacao,
-  operacao: Operacao
+  area: {
+    concepcao: Concepcao,
+    design: Design,
+    implementacao: Implementacao,
+    operacao: Operacao
+  }
 });
 
 const Turma = new mongoose.Schema({
@@ -62,13 +64,8 @@ const Turma = new mongoose.Schema({
     type: String,
     required: true
   },
-  equipes: [Equipe],
-  expectativa: {
-    concepcao: Concepcao,
-    design: Design,
-    implementacao: Implementacao,
-    operacao: Operacao
-  }
+  equipes: [{}],
+  expectativa: {}
 });
 
 module.exports = mongoose.model('Turma', Turma);

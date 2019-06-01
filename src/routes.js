@@ -7,6 +7,8 @@ const routes = express.Router();
 routes.post('/turma', TurmaController.store);
 // Adiciona nova equipe
 routes.post('/turma/equipe/', TurmaController.addEquipe);
+// Adiciona nova Area
+routes.post('/turma/equipe/area', TurmaController.addArea);
 
 // Retorna todas as turmas
 routes.get('/turma', TurmaController.getAll);
