@@ -9,7 +9,6 @@ const Turma = new mongoose.Schema({
     type: String,
     required: true
   },
-  numero: Number,
   semestre: {
     type: String,
     required: true

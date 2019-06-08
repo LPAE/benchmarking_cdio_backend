@@ -54,15 +54,15 @@ class TurmaController {
         if (!turma.equipes[index].hasOwnProperty('area')) {
           turma.equipes[index] = { ...turma.equipes[index], area: {} };
         }
-        console.log(Object.keys(req.body.equipe.area));
         Object.keys(req.body.equipe.area).forEach(key => {
           if (!(key in turma.equipes[index].area)) {
-            turma.equipes[index].area = { ...turma.equipes[index].area, ...req.body.equipe.area.key };
+            turma.equipes[index].area = { ...turma.equipes[index].area, [key]: req.body.equipe.area[key] };
           }
         });
-
         turma.markModified('equipes');
+
         await turma.save();
+        console.log('Area adicionada');
         return res.json(turma);
       } else {
         console.log('Equipe não encontrada');
@@ -70,6 +70,18 @@ class TurmaController {
       }
     } catch (err) {
       console.log(`Erro ao adicionar Area`);
+      return res.sendStatus(404);
+    }
+  }
+
+  async addExpectativa(req, res) {
+    try {
+      const turma = await findOneTurma(req.body);
+      turma.expectativa = { ...turma.expectativa, ...req.body.expectativa };
+      await turma.save();
+      return res.json(turma);
+    } catch (err) {
+      console.log(`Erro ao adicionar Expectativa`);
       return res.sendStatus(404);
     }
   }
