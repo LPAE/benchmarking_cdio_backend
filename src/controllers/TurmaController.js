@@ -74,10 +74,16 @@ class TurmaController {
     }
   }
 
-  async addExpectativa(req, res) {
+  async addConfig(req, res) {
     try {
       const turma = await findOneTurma(req.body);
-      turma.expectativa = { ...turma.expectativa, ...req.body.expectativa };
+      if (req.body.expectativa) {
+        turma.expectativa = { ...turma.expectativa, ...req.body.expectativa };
+      }
+      if (req.body.metrica) {
+        turma.metrica = { ...turma.metrica, ...req.body.metrica };
+      }
+
       await turma.save();
       return res.json(turma);
     } catch (err) {

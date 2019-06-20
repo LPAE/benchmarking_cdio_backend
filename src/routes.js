@@ -10,7 +10,7 @@ routes.post('/turma/equipe', TurmaController.addEquipe);
 // Adiciona nova Area
 routes.post('/turma/equipe/area', TurmaController.addArea);
 // Adiciona ou Atualiza Configurações da Turma
-routes.post('/turma/config', TurmaController.addExpectativa);
+routes.post('/turma/config', TurmaController.addConfig);
 
 // Retorna todas as turmas
 routes.get('/turma', TurmaController.getAll);

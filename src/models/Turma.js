@@ -14,7 +14,8 @@ const Turma = new mongoose.Schema({
     required: true
   },
   equipes: [{}],
-  expectativa: {}
+  expectativa: {},
+  metrica: {}
 });
 
 module.exports = mongoose.model('Turma', Turma);
