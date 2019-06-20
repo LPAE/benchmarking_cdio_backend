@@ -106,7 +106,7 @@ class TurmaController {
         return res.sendStatus(404);
       }
     } catch (err) {
-      console.log(`Erro ao retornar a Turma ${req.params.nome}`);
+      console.log(`Erro ao retornar Turma`);
       return res.sendStatus(404);
     }
   }
