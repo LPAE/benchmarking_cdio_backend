@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 
 mongoose.connect(
-  'mongodb://127.0.0.1:27017/teste', {
+  'mongodb+srv://omnistack:omnistack@cluster0-k1xjv.mongodb.net/test?retryWrites=true&w=majority', {
     useNewUrlParser: true,
   },
   (err) => {
@@ -19,5 +19,4 @@ mongoose.connect(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(require('./routes'));
-app.listen(3333, function () {
-  console.log('app listening on port 3333')} );
+app.listen(process.env.PORT || 3333);
