@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 
 mongoose.connect(
-  'mongodb+srv://omnistack:omnistack@cluster0-k1xjv.mongodb.net/test?retryWrites=true&w=majority', {
+  `${process.env.DATABASE_URL}`, {
     useNewUrlParser: true,
   },
   (err) => {
